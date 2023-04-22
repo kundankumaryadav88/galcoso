@@ -2,9 +2,10 @@ const express=require('express');
 const router=express.Router();
 
 const { home, login, signup } = require('./Controller');
-router.get('/',home)
+const { isValidLoginCredential } = require('./Validation');
+router.get('/',home);
 
-router.get('/login',login)
+router.post('/login',isValidLoginCredential,login);
 
 router.post('/signup',signup)
 
